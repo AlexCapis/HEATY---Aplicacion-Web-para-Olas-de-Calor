@@ -1,0 +1,7 @@
+fecha,nombre,transporte,tiempo_transporte_m,n_hijos_menores,cp,edad
+23/1/2023,andres,coche,40,0,28006,22
+15/02/23,eva,autobus,15,3,28016,35
+12/1/23,miguel,coche,7,0,28002,36
+7/2/23,ana,a pie,20,1,28001,42
+26/2/23,luis,metro,25,1,28014,57
+1/03/23,jacinto,bici,15,0,28002,63
