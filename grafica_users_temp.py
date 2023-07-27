@@ -19,7 +19,7 @@ Se busca ver si el aumento de las temperaturas favorece al registro de mas usuar
 '''
 
 # Importar datos usuarios logueados
-df_us = pd.read_csv('./DESAFIO/csv/usuarios_logueados.csv')
+df_us = pd.read_csv('./csv/usuarios_logueados.csv')
 df_us["fecha_registro"] = pd.to_datetime(df_us["fecha_registro"],format="%d-%m-%Y")
 # print(df_us.head())
 
