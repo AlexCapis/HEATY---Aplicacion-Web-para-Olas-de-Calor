@@ -1,14 +1,10 @@
-import random
-from faker import Faker
 import numpy as np
 import pandas as pd
+import time
 from datetime import datetime, timedelta
-from dateutil.parser import parse 
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator
-import seaborn as sns
 import requests
+
 
 '''
 se cargan los datos de los usuarios registrados "csv/usuarios_logueados.csv" y se utiliza la fecha para representarlo frente al tiempo
@@ -19,13 +15,17 @@ Se busca ver si el aumento de las temperaturas favorece al registro de mas usuar
 '''
 
 # Importar datos usuarios logueados
-df_us = pd.read_csv('./csv/usuarios_logueados.csv')
+df_us = pd.read_csv('./data/users_login/users.csv')
 df_us["fecha_registro"] = pd.to_datetime(df_us["fecha_registro"],format="%d-%m-%Y")
 # print(df_us.head())
 
 #  API AEMET. temperatura media diaria de Madrid
+#Podemos seleccionar el rango de las fechas que nos interesa. Esta para que coja la fecha_fin sea la actual
+fecha_inicio = "2023-01-01"
+fecha_fin = time.strftime("%Y-%m-%d")
+
 api_key = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYW1lbmRpYmFyQGdtYWlsLmNvbSIsImp0aSI6IjMwYWMzZWU0LWMwNDItNDM0NS1iY2YzLTAxNWEwMDBmZTQyMyIsImlzcyI6IkFFTUVUIiwiaWF0IjoxNjkwMjk3MjE1LCJ1c2VySWQiOiIzMGFjM2VlNC1jMDQyLTQzNDUtYmNmMy0wMTVhMDAwZmU0MjMiLCJyb2xlIjoiIn0.qgV8yNMpKsAFrnFGphnPwtf4w_IyyRvC9QOro75LTzM'
-url = f'https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/2023-01-01T00:00:00UTC/fechafin/2023-07-26T00:00:00UTC/estacion/3195/?api_key={api_key}'
+url = f'https://opendata.aemet.es/opendata/api/valores/climatologicos/diarios/datos/fechaini/{fecha_inicio}T00:00:00UTC/fechafin/{fecha_fin}T00:00:00UTC/estacion/3195/?api_key={api_key}'
 response = requests.get(url)
 data = response.json()
 enlace_datos = data['datos']
