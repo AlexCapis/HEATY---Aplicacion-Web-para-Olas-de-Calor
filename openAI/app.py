@@ -1,16 +1,21 @@
 from flask import Flask, render_template, request
 import openai
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
-# Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-openai.api_key = "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"
+# Load environment variables from the .env file
+load_dotenv()
+
+# Retrieve the OpenAI API key from the environment variables
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Function to check if a question is heatwave-related
 def is_heatwave_related(question):
-    # Add your logic here to determine if the question is heatwave-related
-    # You can use simple keyword matching or more advanced NLP techniques
-    # For this example, let's assume we have a list of heatwave-related keywords
+    
+    # we have a list of heatwave-related keywords
+    
     heatwave_keywords = ["heatwave",
     "high temperature",
     "extreme heat",
