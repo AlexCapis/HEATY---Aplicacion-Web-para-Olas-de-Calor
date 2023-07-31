@@ -1,0 +1,4 @@
+# Se muestran las dependencias necesarias para ejecutar el proyecto en app.py
+# Se necesidan únicamente pandas y streamlit, ya que se utiliza poco código basándonos en el uso de imágenes creadas en los notebooks anteriores
+pandas == 2.0.1
+streamlit == 1.24.0
