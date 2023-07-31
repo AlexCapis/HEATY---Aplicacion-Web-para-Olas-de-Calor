@@ -2,26 +2,45 @@
 <html>
 <head>
     <title>Heatwave Q&A</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 <body>
-    <h1>Heatwave Question & Answer</h1>
-    <form method="POST" action="/">
-        <input type="text" name="question" placeholder="Ask your heatwave-related question">
-        <input type="submit" value="Ask">
-    </form>
-    {% if question %}
-        {% if answer %}
-            <h3>Your Question:</h3>
-            <p>{{ question }}</p>
-            <h3>Answer:</h3>
-            <p>{{ answer }}</p>
+    <h1>Chat Interactivo</h1>
+    <div class="container">
+      <form method="POST" action="/">
+          <input type="text" name="question" placeholder="Escribe aquí tu pregunta">
+          <input type="submit" value="Preguntar">
+      </form>
+      
+      <div class="chat-container">
+        <img src="https://www.callcentrehelper.com/images/stories/2020/10/chat-bot-head-set-760.jpg" alt="Chatbot" class="chatbot-image">
+        {% if question %}
+            {% if answer %}
+                <div class="chat-bubble">
+                    <h3>Tu Pregunta:</h3>
+                    <p>{{ question }}</p>
+                </div>
+                <div class="user-bubble">
+                    <h3>Respuesta:</h3>
+                    <p>{{ answer }}</p>
+                </div>
+            {% else %}
+                <div class="chat-bubble">
+                    <h3>Tu Pregunta:</h3>
+                    <p>{{ question }}</p>
+                </div>
+                <div class="user-bubble">
+                    <h3>No hay respuesta disponible para la pregunta.</h3>
+                </div>
+            {% endif %}
         {% else %}
-            <h3>No answer available for this question.</h3>
+            {% if message %}
+                <div class="chat-bubble">
+                    <h3>{{ message }}</h3>
+                </div>
+            {% endif %}
         {% endif %}
-    {% else %}
-        {% if message %}
-            <h3>{{ message }}</h3>
-        {% endif %}
-    {% endif %}
+      </div>
+    </div>
 </body>
 </html>
