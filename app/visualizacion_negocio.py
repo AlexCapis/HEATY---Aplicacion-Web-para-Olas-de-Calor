@@ -17,28 +17,28 @@ def main():
 
     texto = """
 
-    Bienvenido a HEATLY, la aplicación web diseñada para brindarte información educativa y esencial sobre las olas de calor. Descubre el poder de HEATLY y prepárate para enfrentar el calor extremo sin temor.
+    Bienvenido a HEATY, la aplicación web diseñada para brindarte información educativa y esencial sobre las olas de calor. Descubre el poder de HEATY y prepárate para enfrentar el calor extremo sin temor.
 
-    Nuestra misión es empoderarte con datos precisos y valiosos sobre las olas de calor, ayudándote a entender su impacto en tu entorno y en tu salud. Con HEATLY, podrás acceder a una amplia gama de recursos educativos y realizar cuestionarios personalizados para evaluar tus conocimientos sobre el tema.
+    Nuestra misión es empoderarte con datos precisos y valiosos sobre las olas de calor, ayudándote a entender su impacto en tu entorno y en tu salud. Con HEATY, podrás acceder a una amplia gama de recursos educativos y realizar cuestionarios personalizados para evaluar tus conocimientos sobre el tema.
 
     """
     st.write(texto)
 
-    if st.checkbox('¿Cómo funciona HEATLY?'):
+    if st.checkbox('¿Cómo funciona HEATY?'):
             texto= '''
-    Información Educativa: Descubre el poder de HEATLY y adquiere conocimientos sobre las olas de calor. Aprende sobre sus causas, consecuencias y medidas de prevención. Con esta información, estarás preparado para enfrentar el calor sin miedo.
+    Información Educativa: Descubre el poder de HEATY y adquiere conocimientos sobre las olas de calor. Aprende sobre sus causas, consecuencias y medidas de prevención. Con esta información, estarás preparado para enfrentar el calor sin miedo.
 
     Cuestionarios Personalizados: ¿Cuánto sabes realmente sobre las olas de calor? Con nuestros cuestionarios interactivos, podrás evaluar tus conocimientos y obtener retroalimentación para mejorar tu comprensión del tema. ¡Conviértete en un experto en el calor!
 
-    Pronóstico de Temperaturas: Descubre el poder de HEATLY para mantenerte informado sobre las temperaturas venideras en tu área. Con esta anticipación, podrás planificar tus actividades y tomar las medidas necesarias para evitar el impacto del calor extremo.
+    Pronóstico de Temperaturas: Descubre el poder de HEATY para mantenerte informado sobre las temperaturas venideras en tu área. Con esta anticipación, podrás planificar tus actividades y tomar las medidas necesarias para evitar el impacto del calor extremo.
 
-    Consejos Prácticos: Además de la información educativa, descubre el poder de HEATLY para recibir consejos prácticos y recomendaciones para mantenerte fresco y seguro durante las olas de calor. ¡Sin temor al calor, estarás preparado!
+    Consejos Prácticos: Además de la información educativa, descubre el poder de HEATY para recibir consejos prácticos y recomendaciones para mantenerte fresco y seguro durante las olas de calor. ¡Sin temor al calor, estarás preparado!
 
-    En HEATLY, creemos que estar informado y preparado es la clave para enfrentar el calor de manera segura y responsable. Descubre el poder de HEATLY y únete a nuestra comunidad de personas que enfrentan el calor sin temor.
+    En HEATY, creemos que estar informado y preparado es la clave para enfrentar el calor de manera segura y responsable. Descubre el poder de HEATLY y únete a nuestra comunidad de personas que enfrentan el calor sin temor.
 
-    ¡Explora HEATLY y descubre cómo puedes convertirte en un defensor de tu bienestar en tiempos de altas temperaturas! Tu seguridad y comodidad son nuestra prioridad, y estamos aquí para acompañarte en cada paso del camino.
+    ¡Explora HEATY y descubre cómo puedes convertirte en un defensor de tu bienestar en tiempos de altas temperaturas! Tu seguridad y comodidad son nuestra prioridad, y estamos aquí para acompañarte en cada paso del camino.
 
-    Recuerda, el conocimiento es poder, y con HEATLY, estarás listo para abrazar el calor y disfrutar de cada temporada, sin preocupaciones. ¡Bienvenido a la experiencia HEATLY: Descubre el Poder de ¡Sin Temor al Calor!
+    Recuerda, el conocimiento es poder, y con HEATY, estarás listo para abrazar el calor y disfrutar de cada temporada, sin preocupaciones. ¡Bienvenido a la experiencia HEATLY: Descubre el Poder de ¡Sin Temor al Calor!
 
 
     '''
@@ -48,7 +48,7 @@ def main():
 
 
 
-    menu = st.sidebar.selectbox("Selecciona la Página", ['PRINCIPAL','DATOS USUARIOS','DATOS QUIZ', 'PREDICCIÓN'])
+    menu = st.sidebar.selectbox("Selecciona la Página", ['HOME','DATOS USUARIOS','DATOS QUIZ', 'PREDICCIÓN'])
 
 
     if menu == 'DATOS USUARIOS':

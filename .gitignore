@@ -2,5 +2,6 @@
 notebooks/alex_apis.ipynb
 notebooks/apis_blanca.ipynb
 notebooks/fake_quiz.ipynb
-notebooks/prueba_machine_learning.ipynb
 notebooks/futura_conexion_db.ipynb
+
+map/users_temp_grafica.py
