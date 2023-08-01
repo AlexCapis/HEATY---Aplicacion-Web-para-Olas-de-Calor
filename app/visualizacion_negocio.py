@@ -1,15 +1,14 @@
 import streamlit as st
 import pandas as pd
 import os
-from flask import Flask, render_template, request
-import openai
-
+import numpy as np
+import pickle
 
 # Ajustamos la página con un icono en el buscador y el título
-st.set_page_config(page_title="Healty", page_icon=":heart:", layout="wide")
+st.set_page_config(page_title="Healty", page_icon=":thermometer:", layout="wide")
 
 # Ponemos una imagen 
-imagen = "../docs/images/heatylogo.png"
+imagen = "../docs/images/HeatyLogo.jpg"
 imagen_cargada = st.image(imagen)
 
 # Ponemos un titulo a nuestra aplicación
@@ -48,7 +47,7 @@ else:
 
 
 
-menu = st.sidebar.selectbox("Selecciona la Página", ['PRINCIPAL','DATOS USUARIOS','DATOS QUIZ', 'PREDICCIÓN', 'CHATBOT'])
+menu = st.sidebar.selectbox("Selecciona la Página", ['PRINCIPAL','DATOS USUARIOS','DATOS QUIZ', 'PREDICCIÓN'])
 
 
 if menu == 'DATOS USUARIOS':
@@ -163,22 +162,22 @@ elif menu == 'DATOS QUIZ':
     else:
         st.markdown('El dataset esta oculto')
 
-    tab1, tab2, tab3 = st.tabs(['Heart Disease', 'Columnas Binarias','Salud'])
+    tab1, tab2, tab3 = st.tabs(['Porcentage sexos aptos', 'Porcentage aptos por edades', 'Porcentage total'])
 
     with tab1:
 
-        st.subheader('Visualización de la variable target')
+        st.subheader('Visualización de Porcentage de aptos por Sexo')
 
         
-        imagen = ""
+        imagen = "../docs/images/eda_quiz/porc_sexos_aptos.png"
         imagen_cargada = st.image(imagen)
 
     with tab2:
 
-        st.subheader('Visualización de las variables binarias')
+        st.subheader('Visualización de Porcentage de aptos por Edades')
 
         
-        imagen = " "
+        imagen = "../docs/images/eda_quiz/porcentaje_aptos_hm_edades.png"
         imagen_cargada = st.image(imagen)
 
         texto_tab2 = ''' '''
@@ -188,10 +187,10 @@ elif menu == 'DATOS QUIZ':
 
     with tab3:
 
-        st.subheader('Visualización de la variable Salud')
+        st.subheader('Visualización del Porcentage Total')
 
         
-        imagen = ""
+        imagen = "../docs/images/eda_quiz/porc_total_aptos.png"
         imagen_cargada = st.image(imagen)
 
         texto_tab3 = '''
@@ -199,151 +198,6 @@ elif menu == 'DATOS QUIZ':
         '''
         st.write(texto_tab3)
 
-elif menu == 'MODELOS':
-    # Procesamos los datos
-    st.header('Descripción de los Modelos: ')
-   
-
-    texto4= '''
-
-    '''
-    st.write(texto4)
-
-    texto_metricas= '''
-    
-    '''
-    st.write(texto_metricas)
-
-
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Logistic Regression', 'Naive Bayes','Decision Tree Classifier', 'Random Forest Classifier','XGB Classifier', 'PCA'])
-
-    with tab1:
-
-        st.subheader('Descripción del modelo de Logistic Regression')
-
-        texto5= '''
-    
-        '''
-        st.write(texto5)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-        
-        texto6= '''
-    
-        '''
-        st.write(texto6)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-
-
-    with tab2:
-
-        st.subheader('Descripción del modelo de Naive Bayes')
-
-
-        texto7= '''
-    
-        '''
-        st.write(texto7)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-        
-        texto8= '''
-    
-        '''
-        st.write(texto8)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-
-    with tab3:
-
-        st.subheader('Descripción del modelo de Decision Tree Classifier')
-
-        
-
-        texto9= '''
-    
-        '''
-        st.write(texto9)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-        
-        texto10= '''
-    
-        '''
-        st.write(texto10)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-
-
-    with tab4:
-
-        st.subheader('Descripción del modelo de Random Forest Classifier')
-        
-
-        texto11= '''
-    
-        '''
-        st.write(texto11)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-        
-        texto12= '''
-    
-        '''
-        st.write(texto12)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-
-    with tab5:
-
-        st.subheader('Descripción del modelo de XGB Classifier')
-
-        texto13= '''
-    
-        '''
-        st.write(texto13)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-        
-        texto14= '''
-    
-        '''
-        st.write(texto14)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
-
-
-    with tab6:
-
-        st.subheader('Descripción del modelo de PCA')
-
-
-        texto15= '''
-    
-        '''
-        st.write(texto15)
-
-        imagen = ""
-        imagen_cargada = st.image(imagen)
-        
-        texto16= '''
-    
-        '''
-        st.write(texto16)
-
-        imagen = " "
-        imagen_cargada = st.image(imagen)
     
 
 elif menu == 'PREDICCIÓN':
@@ -356,71 +210,33 @@ elif menu == 'PREDICCIÓN':
     else:
         st.markdown('El dataset esta oculto')
 
-    tab1, tab2, tab3 = st.tabs(['Matriz de confusión', 'Recall'])
+    st.header('Prediction Model')
 
 
-elif menu == 'CHATBOT':
-    # Procesamos los datos
-    st.header('Descripción del CHATBOT: ')
-   
-app = Flask(__name__)
+    ruta_mod = "../models/trained_model.pkl"
 
-# Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
-openai.api_key = "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"
+    with open(ruta_mod, 'rb') as file:
+        loaded_model = pickle.load(file)
 
-# Function to check if a question is heatwave-related
-def is_heatwave_related(question):
-    # Add your logic here to determine if the question is heatwave-related
-    # You can use simple keyword matching or more advanced NLP techniques
-    # For this example, let's assume we have a list of heatwave-related keywords
-    heatwave_keywords = ["heatwave",
-    "high temperature",
-    "extreme heat",
-    "heat index",
-    "heat advisory",
-    "heat stress",
-    "heat exhaustion",
-    "heatstroke",
-    "hot weather",
-    "sweltering",
-    "scorching",
-    "sunburn",
-    "dehydration",
-    "hydration",
-    "air conditioning",
-    "fans",
-    "sunscreen",
-    "shade",
-    "water consumption",
-    "cooling centers", 
-    "temperature",
-    "spf",
-    "heat emergency", 
-    "climate",
-    "climate change"]
+    st.header('Input desired parameters:')
 
-    for keyword in heatwave_keywords:
-        if keyword in question.lower():
-            return True
-    return False
+    sexo = st.slider('gender', 0, 1)
+    valor_franja_edad = st.slider('age range', 0, 3)
+    tiene_hijos = st.slider('has children', 0, 1)
+    zona = st.slider('zone in madrid', 0, 2)
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        question = request.form['question']
-        if is_heatwave_related(question):
-            response = openai.Completion.create(
-                engine="text-davinci-002",  # Use the appropriate OpenAI engine for your needs
-                prompt=question,
-                max_tokens=150,
-                stop=None,
-            )
-            answer = response.choices[0].text.strip()
-            return render_template('index.html', question=question, answer=answer)
-        else:
-            return render_template('index.html', message="Please ask only heatwave-related questions.")
-    return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    input = np.array([sexo,	valor_franja_edad, tiene_hijos, zona]).reshape(1, -1)
+    pred = loaded_model.predict(input)[0]
+
+
+
+    #sexo	valor_franja_edad	tiene_hijos	zona	target
+
+    if st.button('TEST!'):
+        if pred == 0:
+            st.header('Lo más probable es que este usuario necesite apoyo e información adicionales')
+        if pred == 1:
+            st.header('Lo más probable es que este usuario obtenga una puntuación de 7 o superior en el cuestionario.  No requiere avisos adicionales en este momento')
+
 
