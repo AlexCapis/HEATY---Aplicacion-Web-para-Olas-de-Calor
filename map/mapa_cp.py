@@ -13,7 +13,7 @@ los usuarios de la zona
 
 
 # Carga la tabla de coordenadas y CP para poder ubicar las chinchetas, y los transforma en 3 listas para usarlo en el FoliumMpa
-df_coord_cp = pd.read_csv('./table_cp/tabla_coord_cp.csv')
+df_coord_cp = pd.read_csv('../table_cp/tabla_coord_cp.csv')
 numeros = df_coord_cp['Codigo Postal'].tolist()
 coordenadas_long = df_coord_cp['Coord_long'].tolist()
 coordenadas_latit = df_coord_cp['Coord_lat'].tolist()
