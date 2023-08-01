@@ -5,3 +5,4 @@ streamlit
 os 
 numpy
 pickle
+sklearn

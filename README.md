@@ -102,7 +102,7 @@ A continuación, se muestra una breve descripción con el significado de cada va
 A continuación se detallan las carpetas y los requisitos de cada una:
 
 
-1. **app**: Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por ño siguiente:
+1. **app**: Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
    - `data`: Contiene los datos en csv obtenidos de los distintos notebooks.
         - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias.
         - `quiz`: Contiene los datos de los usuarios que han realizado el cuestionario.
@@ -112,16 +112,22 @@ A continuación se detallan las carpetas y los requisitos de cada una:
         - `eda_users`: Contiene las imágenes obtenidas a partir del análisis exploratorio de los datos de 'users_login'
         - `heatlylogo.jpg`: El logo emblemático de la aplicación web
    - `models`: Contiene los datos del modelo ganador de las predicciones de machine learning realizadas en el notebook 'des_pred_machine_learning.ipynb'.
-   - `requirements.txt`: Almacena los datos necesarios para poder desplegar el docker con el equipo de Cloud
+   - `requirements.txt`: Almacena los datos necesarios para poder desplegar el docker con el equipo de Cloud y generar una url funcional.
    - `visualizacion_negocio.py`: Contiene el streamlit con todas las funcionalidades.
 
 
 2. **data**: Contiene los datos utilizados en el proyecto. Se compone de las siguientes subcarpetas:
-   - `maps`: Contiene los datos en su formato original, es decir, se encuentran sin procesar.
-   - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias.
-   - `quiz`: Contiene los datos de entrenamiento utilizados para entrenar el modelo.
-   - `table_cp`: Almacena los datos de prueba utilizados para evaluar el modelo.
-   - `users_login`: Contiene los datos de las métricas de cada modulo para poder observar mejor sus respectivas diferencias.
+   - `maps`: Contiene los datos en html para que funcione el mapa de los usuarios con respecto al código postal.
+   - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias del notebook de 'eda_users.ipynb'.
+   - `quiz`: Contiene los datos de los usuarios que han realizado el cuestionario.
+   - `table_cp`: Almacena los datos de las coordenadas de los códigos postales de los usuarios.
+   - `users_login`: Engloba los datos pertenecientes a todos los usuarios que se han registrado en la aplicación web.
+
+5. **map**: Contiene los datos necesarios para desplegar el mapa de usuarios por código postal y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
+   - `maps`: Contiene los datos de html.
+   - `table_cp`: Almacena las coordenadas de los códigos postales de los usuarios en un csv.
+   - `mapa_cp.py`: Muestra un script de python donde se implementa la funcionalidad.
+   - `requeriments.txt`: Almacena los datos necesarios para poder desplegar el docker con el equipo de Cloud y generar una url funcional.
 
 3. **notebooks**: Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
    - `01_EDA.ipynb`: Contiene el análisis exploratorio de datos.
