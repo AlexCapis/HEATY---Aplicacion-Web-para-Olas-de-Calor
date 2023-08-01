@@ -1,0 +1,5 @@
+# Ignoramos los siguientes archivos
+notebooks/alex_apis.ipynb
+notebooks/blanca_apis
+notebooks/fake_quiz.ipynb
+
