@@ -123,44 +123,35 @@ A continuación se detallan las carpetas y los requisitos de cada una:
    - `table_cp`: Almacena los datos de las coordenadas de los códigos postales de los usuarios.
    - `users_login`: Engloba los datos pertenecientes a todos los usuarios que se han registrado en la aplicación web.
 
-5. **map**: Contiene los datos necesarios para desplegar el mapa de usuarios por código postal y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
+3. **docs**: En dicha carpeta se mostrarán los documentos complementarios, los cuales se componen de la siguiente manera:
+
+   - `images`: Se plasma el ódigo para la aplicación web que utiliza el modelo entrenado (Streamlit,...).
+         - `eda_quiz`: Contiene los gráficos que se crean del notebook de 'eda_quiz.ipynb'.
+         - `eda_users`: Contiene los gráficos que se crean del notebook de 'eda_users.ipynb'.
+         - `heatylogo.jpg`: Es el logo de nuestra aplicación web.
+   - `f`:
+
+4. **map**: Contiene los datos necesarios para desplegar el mapa de usuarios por código postal y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
    - `maps`: Contiene los datos de html.
    - `table_cp`: Almacena las coordenadas de los códigos postales de los usuarios en un csv.
    - `mapa_cp.py`: Muestra un script de python donde se implementa la funcionalidad.
    - `requeriments.txt`: Almacena los datos necesarios para poder desplegar el docker con el equipo de Cloud y generar una url funcional.
 
-3. **notebooks**: Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
+5. **models**: Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
    - `01_EDA.ipynb`: Contiene el análisis exploratorio de datos.
    - `02_Preprocesamiento.ipynb`: En él se desarrollan las transformaciones y limpiezas, incluyendo el feature engineering.
    - `03_Entrenamiento_Modelo.ipynb`: Se plasma el entrenamiento de los modelos junto con su hiperparametrización correspondiente.
    - `04_Evaluacion_Modelo.ipynb`: Contiene la evaluación de los modelos, es decir, las métricas de evaluación, interpretación de variables, etc.
 
-4. **src**: En él se almacenan los distintos archivos fuente de Python que implementan las funcionalidades clave del proyecto. Se estructura de la siguiente manera:
+6. **notebooks**: En él se almacenan los distintos archivos fuente de Python que implementan las funcionalidades clave del proyecto. Se estructura de la siguiente manera:
    - `data_processing.py`: Se trata del código para procesar los datos de la carpeta `data/raw` y guardar los datos procesados en la carpeta `data/processed`.
    - `model.py`: Se plasma el código para entrenar y guardar el modelo entrenado utilizando los datos de la carpeta `data/train`.
    - `evaluation.py`: Se muestra el código para evaluar el modelo utilizando los datos de prueba de la carpeta `data/test` y generar métricas de evaluación.
 
-5. **models**: En esta carpeta se almacenarán los archivos relacionados con el modelo entrenado. Dicha carpeta estará compuesta por:
+7. **models**: En esta carpeta se almacenarán los archivos relacionados con el modelo entrenado. Dicha carpeta estará compuesta por:
    - `trained_model.pkl`: Se trata del modelo entrenado guardado en formato pickle.
    - `model_config.yaml`: Es el archivo con la configuración del modelo entrenado, es decir, sus parámetros.
 
-6. **app**: En dicha carpeta se mostrarán los archivos necesarios para el despliegue del modelo en Streamlit y estará compuesta por:
-
-   - `app.py`: Se plasma el ódigo para la aplicación web que utiliza el modelo entrenado (Streamlit,...).
-   - `requirements.txt`: En él se especifica las dependencias del proyecto para poder ejecutar la aplicación.
-
-5. **docs**: Contiene la documentación adicional relacionada con el proyecto. Esta compuesta por:
-   - `imagenes`: Se muestran las diversas imágenes utilizadas para el proyecto
-   - `presentación.pptx`: Se trata del archivo de la presentación a negocio.
-
-6. **docs**: Contiene la documentación adicional relacionada con el proyecto. Esta compuesta por:
-   - `imagenes`: Se muestran las diversas imágenes utilizadas para el proyecto
-   - `presentación.pptx`: Se trata del archivo de la presentación a negocio.
-
-7. **docs**: Contiene la documentación adicional relacionada con el proyecto. Esta compuesta por:
-   - `imagenes`: Se muestran las diversas imágenes utilizadas para el proyecto
-   - `presentación.pptx`: Se trata del archivo de la presentación a negocio.
 
 
-# 4. En formación
 
