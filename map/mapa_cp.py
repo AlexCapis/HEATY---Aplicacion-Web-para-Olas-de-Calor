@@ -31,7 +31,7 @@ def main():
             popup=f'Postal Code: {cp}, Latitud: {alt}, Longitud: {lon}'      
         ).add_to(mapa)
         
-    mapa.save('./maps/mapa_ub_cpostales.html')
+    mapa.save('./mapa_ub_cpostales.html')
 
 if __name__ == '__main__':
     
