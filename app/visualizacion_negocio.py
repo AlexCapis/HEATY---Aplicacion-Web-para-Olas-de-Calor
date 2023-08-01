@@ -9,7 +9,7 @@ def main():
     st.set_page_config(page_title="Healty", page_icon=":thermometer:", layout="wide")
 
     # Ponemos una imagen 
-    imagen = "../docs/images/HeatyLogo.jpg"
+    imagen = "images/heatylogo.jpg"
     imagen_cargada = st.image(imagen)
 
     # Ponemos un titulo a nuestra aplicación
@@ -56,7 +56,7 @@ def main():
         st.header('Datos Usuarios') # Nombramos el título
     
         if st.checkbox('Mostrar el DataFrame '):
-            df= pd.read_csv("../data/users_login/users.csv")
+            df= pd.read_csv("./data/users_login/users.csv")
             df
         else:
             st.markdown('El dataset esta oculto')
@@ -78,11 +78,11 @@ def main():
                     '''
             st.write(texto_tab2)
             
-            imagen = "../docs/images/eda_users/usuarios_por_mes_barras.png"
+            imagen = "images/eda_users/usuarios_por_mes_barras.png"
             imagen_cargada = st.image(imagen)
 
             
-            imagen = "../docs/images/eda_users/usuarios_por_mes_lineas.png"
+            imagen = "images/eda_users/usuarios_por_mes_lineas.png"
             imagen_cargada = st.image(imagen)
             
             
@@ -95,13 +95,9 @@ def main():
                     '''
             st.write(texto_tab2)
             
-            imagen = "../docs/images/eda_users/pie_plot_sexo.png"
+            imagen = "images/eda_users/pie_plot_sexo.png"
             imagen_cargada = st.image(imagen)
 
-            texto_tab2 = '''
-            
-            '''
-            st.write(texto_tab2)
 
 
         with tab3:
@@ -112,47 +108,53 @@ def main():
                     '''
             st.write(texto_tab2)
             
-            imagen = "../docs/images/eda_users/pie_plot_franja_edad_espaciado.png"
-            imagen_cargada = st.image(imagen)
+            imagen = "images/eda_users/pie_plot_franja_edad_circulos.png"
+            imagen_cargada2 = st.image(imagen)
 
 
 
         with tab4:
 
             st.subheader('Visualización de la variable Código Postal')
+
             texto_tab3 = '''
-        
+            Podemos observar los 15 Códigos Postales donde se loguean más usuarios.
             '''
             st.write(texto_tab3)
         
-            imagen = "../docs/images/eda_users/grafico_barras_cp_top_15.png"
+            imagen = "images/eda_users/grafico_barras_cp_top_15.png"
             imagen_cargada = st.image(imagen)
 
-            imagen = "../docs/images/eda_users/pie_plot_zona_cp.png"
-            imagen_cargada = st.image(imagen)
             texto_tab3 = '''
-        
+            Se muestra la distribución de los usuarios logueados por zonas
             '''
             st.write(texto_tab3)
+
+            imagen = "images/eda_users/pie_plot_zona_cp.png"
+            imagen_cargada = st.image(imagen)
+
 
 
         with tab5:
 
             st.subheader('Visualización de la variable Número de Hijos Menores')
 
-            imagen = "../docs/images/eda_users/cantidad_hijos_menores.png"
-            imagen_cargada = st.image(imagen)
+            texto_tab3 = '''
+            Podemos observar la cantidad de hijos menores por usuario.
+            '''
+            st.write(texto_tab3)
 
-            imagen = "../docs/images/eda_users/box_plot_cantidad_hijos_menores.png"
-            imagen_cargada = st.image(imagen)
-
-            imagen = "../docs/images/eda_users/hijos_menores_si_no.png"
+            imagen = "images/eda_users/cantidad_hijos_menores.png"
             imagen_cargada = st.image(imagen)
 
             texto_tab3 = '''
-        
+            Nos muestra la cantidad de usuarios que tienen hijos con respecto a los que no tienen.
             '''
             st.write(texto_tab3)
+
+            imagen = "images/eda_users/hijos_menores_si_no.png"
+            imagen_cargada = st.image(imagen)
+
 
     elif menu == 'DATOS QUIZ':
 
@@ -160,27 +162,31 @@ def main():
         st.header('Procesado de los datos del cuestionario: ')
 
         if st.checkbox('Mostrar el DataFrame procesado'):
-            df_procesado= pd.read_csv("../data/quiz/answers.csv")
+            df_procesado= pd.read_csv("./data/quiz/answers.csv")
             df_procesado
         else:
             st.markdown('El dataset esta oculto')
 
-        tab1, tab2, tab3 = st.tabs(['Porcentage sexos aptos', 'Porcentage aptos por edades', 'Porcentage total'])
+        tab1, tab2, tab3 = st.tabs(['Porcentaje sexos aptos', 'Porcentaje aptos por edades', 'Porcentaje total'])
 
         with tab1:
 
-            st.subheader('Visualización de Porcentage de aptos por Sexo')
+            st.subheader('Visualización de Porcentaje de aptos por Sexo')
 
+            texto_tab3 = '''
+            Se muestran los diversos porcentajes de aptos para hombres y para mujeres 
+            '''
+            st.write(texto_tab3)
             
-            imagen = "../docs/images/eda_quiz/porc_sexos_aptos.png"
+            imagen = "images/eda_quiz/porc_sexos_aptos.png"
             imagen_cargada = st.image(imagen)
 
         with tab2:
 
-            st.subheader('Visualización de Porcentage de aptos por Edades')
+            st.subheader('Visualización de Porcentaje de aptos por Edades')
 
             
-            imagen = "../docs/images/eda_quiz/porcentaje_aptos_hm_edades.png"
+            imagen = "images/eda_quiz/porcentaje_aptos_hm_edades.png"
             imagen_cargada = st.image(imagen)
 
             texto_tab2 = ''' '''
@@ -190,10 +196,10 @@ def main():
 
         with tab3:
 
-            st.subheader('Visualización del Porcentage Total')
+            st.subheader('Visualización del Porcentaje Total')
 
             
-            imagen = "../docs/images/eda_quiz/porc_total_aptos.png"
+            imagen = "images/eda_quiz/porc_total_aptos.png"
             imagen_cargada = st.image(imagen)
 
             texto_tab3 = '''
@@ -208,7 +214,7 @@ def main():
         st.header('Descripción de Machine Learning: ')
     
         if st.checkbox('Mostrar el DataFrame procesado'):
-            df_procesado= pd.read_csv("../data/processed/users_processed.csv")
+            df_procesado= pd.read_csv("./data/processed/users_processed.csv")
             df_procesado
         else:
             st.markdown('El dataset esta oculto')
@@ -216,17 +222,17 @@ def main():
         st.header('Prediction Model')
 
 
-        ruta_mod = "../models/trained_model.pkl"
+        ruta_mod = "./models/trained_model.pkl"
 
         with open(ruta_mod, 'rb') as file:
             loaded_model = pickle.load(file)
 
-        st.header('Input desired parameters:')
+        st.header('Introduce los parámetros:')
 
-        sexo = st.slider('gender', 0, 1)
-        valor_franja_edad = st.slider('age range', 0, 3)
-        tiene_hijos = st.slider('has children', 0, 1)
-        zona = st.slider('zone in madrid', 0, 2)
+        sexo = st.slider('Género', 0, 1)
+        valor_franja_edad = st.slider('Rango de edad', 0, 3)
+        tiene_hijos = st.slider('Tienes hijos?', 0, 1)
+        zona = st.slider('Zona de Madrid', 0, 2)
 
 
         input = np.array([sexo,	valor_franja_edad, tiene_hijos, zona]).reshape(1, -1)
