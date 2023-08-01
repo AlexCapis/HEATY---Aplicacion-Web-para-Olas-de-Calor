@@ -6,14 +6,14 @@ import pickle
 
 def main():
     # Ajustamos la página con un icono en el buscador y el título
-    st.set_page_config(page_title="Healty", page_icon=":thermometer:", layout="wide")
+    st.set_page_config(page_title="Healy", page_icon=":thermometer:", layout="wide")
 
     # Ponemos una imagen 
     imagen = "images/heatylogo.jpg"
     imagen_cargada = st.image(imagen)
 
     # Ponemos un titulo a nuestra aplicación
-    st.title("Descubre el Poder de HEATLY: ¡Sin Temor al Calor!")
+    st.title("Descubre el Poder de HEATY: ¡Sin Temor al Calor!")
 
     texto = """
 
@@ -229,10 +229,23 @@ def main():
 
         st.header('Introduce los parámetros:')
 
-        sexo = st.slider('Género', 0, 1)
-        valor_franja_edad = st.slider('Rango de edad', 0, 3)
-        tiene_hijos = st.slider('Tienes hijos?', 0, 1)
-        zona = st.slider('Zona de Madrid', 0, 2)
+        # Define legends for each input parameter in Spanish
+        gender_legend = {0: 'Hombre', 1: 'Mujer'}
+        age_range_legend = {0: '17-24', 1: '25-45', 2: '45-64', 3: '65+'}
+        has_children_legend = {0: 'No', 1: 'Sí'}
+        zone_legend = {0: 'Madrid Centro', 1: 'Sur', 2: 'Norte'}
+
+        # Use st.selectbox for each input parameter
+        sexo = st.selectbox('Sexo', options=list(gender_legend.values()))
+        valor_franja_edad = st.selectbox('Rango de Edad', options=list(age_range_legend.values()))
+        tiene_hijos = st.selectbox('Tiene Hijos', options=list(has_children_legend.values()))
+        zona = st.selectbox('Zona en Madrid', options=list(zone_legend.values()))
+
+        # Reverse the mapping to get the numerical value from the user-friendly label
+        sexo = list(gender_legend.keys())[list(gender_legend.values()).index(sexo)]
+        valor_franja_edad = list(age_range_legend.keys())[list(age_range_legend.values()).index(valor_franja_edad)]
+        tiene_hijos = list(has_children_legend.keys())[list(has_children_legend.values()).index(tiene_hijos)]
+        zona = list(zone_legend.keys())[list(zone_legend.values()).index(zona)]
 
 
         input = np.array([sexo,	valor_franja_edad, tiene_hijos, zona]).reshape(1, -1)

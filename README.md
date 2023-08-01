@@ -2,11 +2,8 @@
 </a>
 <h1>HEATLY: ¡Sin Temor al Calor!</h1>
 
-#### Autores: [Alex Marzá Manuel](https://github.com/AlexCapis),
-[Blanca Marmolejo](https://github.com/BlancaMarmolejo), 
-[Juan A-Mendizábal Ibarrola](https://github.com/juanmendiz)
-#### Contribuidores: [Daniel](https://github.com/danieskka), 
-[Diego](https://github.com/Banbushka)
+#### Autores: [Alex Marzá Manuel](https://github.com/AlexCapis), [Blanca Marmolejo](https://github.com/BlancaMarmolejo),  [Juan A-Mendizábal Ibarrola](https://github.com/juanmendiz)
+#### Contribuidores: [Daniel](https://github.com/danieskka),  [Diego](https://github.com/Banbushka)
 
 Bienvenido a HEATLY, la aplicación web diseñada para brindarte información educativa y esencial sobre las olas de calor. Descubre el poder de HEATLY y prepárate para enfrentar el calor extremo sin temor.
 
@@ -105,7 +102,7 @@ A continuación, se muestra una breve descripción con el significado de cada va
 A continuación se detallan las carpetas y los requisitos de cada una:
 
 
-1. **app**: Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Se compone de las siguientes subcarpetas:
+1. **app**: Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por ño siguiente:
    - `data`: Contiene los datos en csv obtenidos de los distintos notebooks.
         - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias.
         - `quiz`: Contiene los datos de los usuarios que han realizado el cuestionario.
@@ -120,11 +117,11 @@ A continuación se detallan las carpetas y los requisitos de cada una:
 
 
 2. **data**: Contiene los datos utilizados en el proyecto. Se compone de las siguientes subcarpetas:
-   - `raw`: Contiene los datos en su formato original, es decir, se encuentran sin procesar.
+   - `maps`: Contiene los datos en su formato original, es decir, se encuentran sin procesar.
    - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias.
-   - `train`: Contiene los datos de entrenamiento utilizados para entrenar el modelo.
-   - `test`: Almacena los datos de prueba utilizados para evaluar el modelo.
-   - `comparation_models_metrics`: Contiene los datos de las métricas de cada modulo para poder observar mejor sus respectivas diferencias.
+   - `quiz`: Contiene los datos de entrenamiento utilizados para entrenar el modelo.
+   - `table_cp`: Almacena los datos de prueba utilizados para evaluar el modelo.
+   - `users_login`: Contiene los datos de las métricas de cada modulo para poder observar mejor sus respectivas diferencias.
 
 3. **notebooks**: Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
    - `01_EDA.ipynb`: Contiene el análisis exploratorio de datos.
