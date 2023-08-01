@@ -2,35 +2,110 @@
 <html>
 <head>
     <title>Heatwave Q&A</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* height: 100vh; */
+            margin: 80px;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .chat-container img {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 450px;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(90deg, rgba(218, 84, 60, 1) 35%, rgba(250, 234, 135, 1) 100%);
+            border-radius: 10px;
+            margin: 0 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            border: 2px solid #fff;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: #fff;
+            background-color: transparent;
+            flex: 1;
+        }
+
+        input[type="submit"] {
+            background: url("../templates/assets/Size=32.svg") no-repeat center;
+            width: 32px;
+            height: 32px;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .chat-bubble, .user-bubble {
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+            max-width: 450px; /* Limita el ancho máximo de los bocadillos */
+            width: 100%; /* Asegura que los bocadillos no se desborden */
+        }
+
+        .chat-bubble h3, .user-bubble h3 {
+            margin: 0;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .chat-bubble p, .user-bubble p {
+            margin: 0;
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Chat Interactivo</h1>
-    <div class="container">
-      <form method="POST" action="/">
-          <input type="text" name="question" placeholder="Escribe aquí tu pregunta">
-          <input type="submit" value="Preguntar">
-      </form>
-      
       <div class="chat-container">
-        <img src="https://www.callcentrehelper.com/images/stories/2020/10/chat-bot-head-set-760.jpg" alt="Chatbot" class="chatbot-image">
+        <img src="../templates/assets/MAR IA.svg" alt="Profesora virtual" width="450px">
+        <img src="../templates/assets/Frame 24.svg" alt="Chat" width="450px">
         {% if question %}
             {% if answer %}
                 <div class="chat-bubble">
-                    <h3>Tu Pregunta:</h3>
+                    <h3>Your answer:</h3>
                     <p>{{ question }}</p>
                 </div>
                 <div class="user-bubble">
-                    <h3>Respuesta:</h3>
+                    <h3>Response:</h3>
                     <p>{{ answer }}</p>
                 </div>
             {% else %}
                 <div class="chat-bubble">
-                    <h3>Tu Pregunta:</h3>
+                    <h3>Your answer:</h3>
                     <p>{{ question }}</p>
                 </div>
                 <div class="user-bubble">
-                    <h3>No hay respuesta disponible para la pregunta.</h3>
+                    <h3>There is not available answer for your question, try it again.</h3>
                 </div>
             {% endif %}
         {% else %}
@@ -40,7 +115,12 @@
                 </div>
             {% endif %}
         {% endif %}
-      </div>
+        <div class="container">
+            <form method="POST" action="/">
+                <input type="text" name="question" placeholder="Type a question">
+                <input type="submit" value="">
+            </form>
+        </div>
     </div>
 </body>
 </html>
