@@ -3,6 +3,57 @@ import pandas as pd
 import os
 import numpy as np
 import pickle
+import pydeck as pdk
+
+
+def load_data(file_path):
+    data = pd.read_csv(file_path)
+    return data
+
+def create_map(data):
+    view_state = pdk.ViewState(
+        latitude=data['latitude'].mean(),
+        longitude=data['longitude'].mean(),
+        zoom=12,
+    )
+
+
+    layer = pdk.Layer(
+        "ScatterplotLayer",
+        data=data,
+        get_position=["longitude", "latitude"],
+        get_radius=100,
+        get_color=[255, 0, 0],
+        auto_highlight=True,
+        pickable=True,
+    )
+
+
+
+    tooltip_html = """
+    <b>Código Postal:</b> {cp} <br>
+    <b>Número de Usuarios:</b> {users} <br>
+    <b>Edad Media Usuarios :</b> {media_edad}
+
+    
+
+    """
+
+    tool_tip = {"html": tooltip_html, "style": {"backgroundColor": "steelblue", "color": "white"}}
+
+    map = pdk.Deck(
+        map_style="mapbox://styles/mapbox/outdoors-v11",
+        initial_view_state=view_state,
+        layers=[layer],
+        tooltip=tool_tip,
+    )
+
+    return map
+
+
+
+
+
 
 def main():
     # Ajustamos la página con un icono en el buscador y el título
@@ -48,7 +99,7 @@ def main():
 
 
 
-    menu = st.sidebar.selectbox("Selecciona la Página", ['HOME','DATOS USUARIOS','DATOS QUIZ', 'PREDICCIÓN'])
+    menu = st.sidebar.selectbox("Selecciona la Página", ['HOME','DATOS USUARIOS','MAPA INTERACTIVO','DATOS QUIZ', 'PREDICCIÓN'])
 
 
     if menu == 'DATOS USUARIOS':
@@ -155,6 +206,22 @@ def main():
             imagen = "images/eda_users/hijos_menores_si_no.png"
             imagen_cargada = st.image(imagen)
 
+    elif menu == 'MAPA INTERACTIVO':
+
+
+        # Procesamos los datos
+        st.header('Datos del mapa interactivo: ')
+
+        df_procesado = pd.read_csv("./data/table_cp/mapa_users_cp.csv")
+        st.dataframe(df_procesado)
+    
+
+        st.subheader("Mapa de ubicaciones")
+
+        if df_procesado is not None:
+            pydeck_map = create_map(df_procesado)
+            st.pydeck_chart(pydeck_map)
+    
 
     elif menu == 'DATOS QUIZ':
 
