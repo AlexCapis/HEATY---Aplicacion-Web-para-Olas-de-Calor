@@ -1,6 +1,0 @@
-numpy
-pandas
-time
-datetime
-matplotlib
-requests
