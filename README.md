@@ -153,14 +153,14 @@ A continuación se detallan las carpetas y los requisitos de cada una:
    - `visualizacion_negocio.py`: Contiene el streamlit con todas las funcionalidades.
 
 
-2. **data**: Contiene los datos utilizados en el proyecto. Se compone de las siguientes subcarpetas:
+2. [data](https://github.com/AlexCapis/DESAFIO/tree/main/data): Contiene los datos utilizados en el proyecto. Se compone de las siguientes subcarpetas:
    - `maps`: Contiene los datos en html para que funcione el mapa de los usuarios con respecto al código postal.
    - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias del notebook de 'eda_users.ipynb'.
    - `quiz`: Contiene los datos de los usuarios que han realizado el cuestionario.
    - `table_cp`: Almacena los datos de las coordenadas de los códigos postales de los usuarios.
    - `users_login`: Engloba los datos pertenecientes a todos los usuarios que se han registrado en la aplicación web.
 
-3. **docs**: En dicha carpeta se mostrarán los documentos complementarios, los cuales se componen de la siguiente manera:
+3. [docs](https://github.com/AlexCapis/DESAFIO/tree/main/docs): En dicha carpeta se mostrarán los documentos complementarios, los cuales se componen de la siguiente manera:
 
    - `images`: Se plasma el código para la aplicación web que utiliza el modelo entrenado (Streamlit,...).
          - `eda_quiz`: Contiene los gráficos que se crean del notebook de 'eda_quiz.ipynb'.
@@ -169,18 +169,18 @@ A continuación se detallan las carpetas y los requisitos de cada una:
    - `equipo_data_science.pdf`: Plasma el contenido del trabajo realizado por el equipo de data science de forma más detallada
    - `equipo_data_science.pptx`: Es un power point que indica aquello que hemos realizado de forma esquemática y lo que queremos implementar en el futuro.
 
-4. **models**: 
+4. [models](https://github.com/AlexCapis/DESAFIO/tree/main/models): 
    - `trained_model.pkl`: Contiene los datos del modelo ganador de las predicciones de machine learning realizadas en el notebook 'des_pred_machine_learning.ipynb'.
 
 
-5. **notebooks**: Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
+5. [notebooks](https://github.com/AlexCapis/DESAFIO/tree/main/notebooks): Se encuentran los archivos Jupyter Notebook que contienen los distintos desarrollos del proyecto. Estan estructurados de la siguiente manera.
    - `db_creation_csv.ipynb`: Se desarrollan con detenimiento las bases de datos de usuarios y de cuestionario de forma detallada.
    - `eda_quiz.ipynb`:  Contiene el análisis exploratorio de datos del cuestionario realizado por los usuarios.
    - `eda_users.ipynb`:  Contiene el análisis exploratorio de datos de los usuarios.
    - `heatwaveAI.ipynb`: Almacena la información más detallada acerca de la implementación del Chatbot.
    - `machine_learning.ipynb`: Engloba el desarrollo del machine learning realizado originando el modelo ganador.
 
-6. **openAI**: 
+6. [openAI](https://github.com/AlexCapis/DESAFIO/tree/main/openAI): 
    - `templates`: Almacena el código de html necesario y los 'assets' pertinentes para poder mejorar visualmente el código de 'app.py'
    - `app.py`: Muestra el código necesario para desplegar el Chatbot con respuestas personalizadas.
    - `requeriments`: Almacena los datos necesarios para poder desplegar el docker con el equipo de Cloud y generar una url funcional.
