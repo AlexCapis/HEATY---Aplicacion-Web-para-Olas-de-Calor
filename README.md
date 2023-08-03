@@ -138,7 +138,7 @@ En HEATY, creemos que estar informado y preparado es la clave para enfrentar el 
 A continuación se detallan las carpetas y los requisitos de cada una:
 
 
-1. **app**: Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
+1. [app](https://github.com/AlexCapis/DESAFIO/tree/main/app): Contiene los datos necesarios para desplegar streamlit y que se pueda conectar con el equipo de Cloud y Full-Stack. Esta carpeta está compuesta por lo siguiente:
    - `data`: Contiene los datos en csv obtenidos de los distintos notebooks.
         - `processed`: Almacena los datos procesados después de realizar todas las transformaciones necesarias.
         - `quiz`: Contiene los datos de los usuarios que han realizado el cuestionario.
