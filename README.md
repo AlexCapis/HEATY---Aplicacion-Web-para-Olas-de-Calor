@@ -64,73 +64,103 @@ En HEATY, creemos que estar informado y preparado es la clave para enfrentar el 
 #### ¿Qué dificultades podemos encontrar?
 
 
-- **Creación de bases de datos**: Dado que no había usuarios reales al iniciar el desarrollo de la aplicación, decidimos generar datos ficticios utilizando la librería "Faker" para demostrar qué análisis se podría proporcionar. Debido a que los datos se generan de manera aleatoria, no hay correlaciones fuertes entre las variables. La conscuencia es un modelo con una puntuación baja.
+- **Creación de bases de datos**: Dado que no había usuarios reales al iniciar el desarrollo de la aplicación, decidimos generar datos ficticios utilizando la librería "Faker" para demostrar qué análisis se podría proporcionar.
+    <details>
+    <summary>Solución con Faker</summary>
+    <p>
+    import pandas as pd
+
+    import random
+
+    from faker import Faker
+
+    from datetime import datetime, timedelta
+
+    def generate_unique_database(num_rows):
+
+        fake = Faker()
+        database = set()
+        email_set = set()
+        user_id_set = set()
+
+        start_date = datetime(2023, 1, 1)
+        end_date = datetime.now()
+
+        while len(database) < num_rows:
+            fecha = fake.date_of_birth(minimum_age=18, maximum_age=100).strftime("%d-%m-%Y")
+            nombre = fake.name()
+            cp = random.choice(VALID_POSTAL_CODES)
+            
+            n_hijos_menores = random.randint(0, 5)
+            sexo = random.choice(["M", "H"])
+
+            while True:
+                email = fake.email()
+                if email not in email_set:
+                    email_set.add(email)
+                    break
+
+            while True:
+                user_id = random.randint(100000, 999999)
+                if user_id not in user_id_set:
+                    user_id_set.add(user_id)
+                    break
+            
+            registration_date = fake.date_between(start_date=start_date, end_date=end_date).strftime("%d-%m-%Y")
+            
+            row = (registration_date, nombre, user_id, sexo, fecha, cp, n_hijos_menores, email)
+            database.add(row)
+
+        return list(database)
+    </p>
+    </details>
+- **Desbalanceo de los datos**: Otro problema que podría surgir con el tiempo es que nuestro objetivo para el modelo podría desequilibrarse a medida que tomamos más datos. Para ello decidimos Implementar técnicas de equilibrado como parte del proceso automatizado de reentrenamiento.
 
     <details>
-    <summary>Solución</summary>
+    <summary>Uso de SMOTE como solución</summary>
     <p>
 
-    Una vez que la aplicación esté implementada y adquiramos usuarios, almacenaremos y actualizaremos regularmente las tablas, lo que nos permitirá reentrenar el modelo, identificar patrones relevantes y, con el tiempo, mejorar el rendimiento de nuestro modelo mediante un proceso automatizado de reentrenamiento. Esto ayudará al equipo de marketing a identificar tendencias y dirigir sus campañas publicitarias en función del análisis estadístico de la información de los usuarios.
+    #### Instantiate SMOTE
+    smote = SMOTE(sampling_strategy='auto', random_state=42)
 
+    #### Fit and apply SMOTE to balance the target column in 'mldf'
+    X_resampled, y_resampled = smote.fit_resample(X_mldf, y_mldf)
+
+    #### Create a new DataFrame 'data' with the balanced data
+    data = pd.DataFrame(X_resampled, columns=X_mldf.columns)
+    data['target'] = y_resampled
+
+    #### Check the balance of the 'target' column in the balanced DataFrame 'data'
+    target_counts_balanced = data['target'].value_counts()
 
     </p>
     </details>
 
-- **Desbalanceo de los datos**: Otro problema que podría surgir con el tiempo es que nuestro objetivo para el modelo podría desequilibrarse a medida que tomamos más datos.
+
+- **Gran equipo de trabajo**: Al inicio, trabajar en un equipo de 15 personas fue un tanto desconcertante, pero rápidamente encontramos la clave para el éxito: mantener una comunicación constante dentro del equipo de datos y con los otros equipos involucrados en este desafío grupal. Nuestro equipo de data science colaboraba estrechamente con equipos de marketing, UXUI, ciberseguridad, nube y desarrollo completo. La excelente comunicación entre todos nosotros fue el factor fundamental que hizo que nuestro trabajo fuera altamente eficiente. 
 
     <details>
-    <summary>Solución</summary>
+    <summary>Discord y Google Meet</summary>
     <p>
-
-    Implementar técnicas de equilibrado como parte del proceso automatizado de reentrenamiento.
-
+    Nuestra comunicación efectiva se logró gracias al uso de dos aplicaciones clave. Utilizamos Google Meet para realizar nuestras reuniones diarias, lo que nos permitió mantenernos sincronizados y actualizados sobre el progreso del proyecto. Además, contamos con Discord para comunicaciones más ágiles y para resolver problemas cotidianos de forma rápida y eficiente. Estas herramientas nos brindaron una excelente plataforma para colaborar de manera efectiva y mantener una estrecha relación entre los equipos, facilitando así nuestro trabajo conjunto en el desafío grupal.
     </p>
     </details>
 
-- **Constante comunicación**: También podría surgir otro problema si el equipo de marketing decide integrar más información de los usuarios.
-
     <details>
-    <summary>Solución</summary>
-    <p>
+    <summary>Trello y Figma</summary>
+    Para lograr una organización rápida y eficaz en nuestro amplio equipo, empleamos las aplicaciones Trello y Figma. Utilizamos Trello para distribuir tareas dentro del grupo de data science, lo que nos permitió mantener un seguimiento claro y ordenado de las actividades en curso. Por otro lado, Figma fue la herramienta elegida para una distribución más global de todos los equipos, permitiéndonos observar cómo se desarrollaban los diferentes equipos que formaban parte de cada vertical. Estas aplicaciones fueron fundamentales para mantener la coordinación y visibilidad necesarias en nuestro proyecto grupal.
 
-    Mantener una comunicación cercana con el equipo de marketing y adaptar nuestro modelo en consecuencia.
 
-    </p>
+    <img src="./docs/images/trello/trello.png" alt="drawing" width="500"/>
+
     </details>
 
-
-
-
+- **Interpretación de resultados**: Comprender y comunicar los resultados del modelo de manera efectiva puede ser un desafío. Se necesita interpretar los hallazgos y explicar las predicciones de forma comprensible para diferentes audiencias. Por ello, desde el equipo de data science realizamos un Streamlit para que la comprensión de los datos y la comunicación hacia el equipo de negocio fuera más eficiente y directa.
     <details>
-    <summary>Ver imagen</summary>
-    <img src=" " alt="drawing" width="400"/>
-    </details>
+    <summary>Streamlit</summary>
 
-    <details>
-    <summary>Técnica de desbalanceo de datos</summary>
-    <p>
+    <img src="./docs/images/streamlit/streamlit_HEATY.png" alt="drawing" width="500"/>
 
-
-    </p>
-    </details>
-
-- **Gran equipo de trabajo**: Trabajar en un equipo de 15 personas fue un poco confuso al principio.
-
-    <details>
-    <summary></summary>
-    <p>
-    Mantuvimos una comunicación constante dentro del equipo de datos, así como con los otros equipos que formaban parte de este desafío grupal. Además de nuestro equipo de ciencia de datos, había equipos de marketing, UXUI, ciberseguridad, nube y desarrollo completo. La comunicación entre todos los equipos fue excelente, lo que hizo nuestro trabajo más eficiente.
-
-
-    </p>
-    </details>
-
-- **Interpretación de resultados**: Comprender y comunicar los resultados del modelo de manera efectiva puede ser un desafío. Se necesita interpretar los hallazgos y explicar las predicciones de forma comprensible para diferentes audiencias.
-    <details>
-    <summary></summary>
-    <p>
-
-    </p>
     </details>
 
 # 3. Estructura de carpetas
@@ -165,6 +195,8 @@ A continuación se detallan las carpetas y los requisitos de cada una:
    - `images`: Se plasma el código para la aplicación web que utiliza el modelo entrenado (Streamlit,...).
          - `eda_quiz`: Contiene los gráficos que se crean del notebook de 'eda_quiz.ipynb'.
          - `eda_users`: Contiene los gráficos que se crean del notebook de 'eda_users.ipynb'.
+         - `streamlit`: Almacena la imagen para ver como nos hemos organizado el trabajo desde el equipo de data science.
+         - `streamlit`: Almacena imágenes del streamlit que hemos realizado para comunicarnos con el equipo de negocio.
          - `heatylogo.jpg`: Es el logo de nuestra aplicación web.
    - `equipo_data_science.pdf`: Plasma el contenido del trabajo realizado por el equipo de data science de forma más detallada
    - `equipo_data_science.pptx`: Es un power point que indica aquello que hemos realizado de forma esquemática y lo que queremos implementar en el futuro.
@@ -189,27 +221,21 @@ A continuación se detallan las carpetas y los requisitos de cada una:
 # 4. Integración Mar-IA
 
 Construimos un Chatbot llamado Mar-IA impulsado por IA que interactúa con los usuarios y brinda respuestas personalizadas y oportunas a sus preguntas. El Chatbot mejora la experiencia del usuario al proporcionar asistencia inmediata y precisa, además de aliviar la carga del equipo de soporte al manejar consultas comunes de manera automatizada.
+    <details>
+    <summary>Mar_IA</summary>
+    <img src="./openAI/templates/assets/Frame 24.svg " alt="drawing" width="500"/>
+    </details>
 
-<details>
-<summary>Mar-IA</summary>
-<p>
-![Mar-IA](/openAI/templates/assets/Frame 24.svg)
-</p>
-</details>
+
 
 
 
 # 5. Implementación del Mapa Interactivo
 
 Implementamos un mapa interactivo que muestra la ubicación geográfica de los usuarios utilizando los códigos postales. En dicho mapa se podrá observar el sumatorio de los usuarios que pertenecen a ese código postal, además se proporcionará la edad media pertinente de dichos usuarios. Esta funcionalidad proporciona una visión geográfica de la distribución de los usuarios, lo que ayuda al equipo de negocio a comprender mejor la audiencia y planificar estrategias de marketing y expansión.
-
-
-- ** **: 
     <details>
-    <summary>Mapa Interactivo de los usuarios</summary>
-    <p>
-QUIERO PONER UN PANTALLAZO DEL MAPA INTERACTIVO PARA QUE SE MUESTREN LOS PUNTOS Y EL DESPLEGABLE DE SUMATORIO USUARIOS Y LA EDAD MEDIA
-    </p>
+    <summary>Mapa Interactivo </summary>
+    <img src="./docs/images/streamlit/mapa_interactivo.png" alt="drawing" width="500"/>
     </details>
 
 
@@ -222,21 +248,19 @@ Desarrollamos una aplicación web utilizando Streamlit, una biblioteca de Python
 
 - **Datos usuarios**: En la aplicación, el equipo de negocio puede acceder a datos demográficos, comportamiento del usuario y patrones de uso, lo que les permite entender mejor a su audiencia y ajustar sus estrategias en consecuencia.
     <details>
-    <summary> Estadísticas</summary>
-    <p>
-QUIERO MOSTRAR UNA DE LAS TANTAS ESTADISTICAS QUE TENEMOS DE USUARIOS LA QUE SEA
-    </p>
+    <summary>Estadísticas</summary>
+    <img src="./docs/images/eda_users/pie_plot_franja_edad_circulos.png " alt="drawing" width="500"/>
     </details>
+
+
 
 
 - **Mapa Interactivo**: Insertamos dentro de Streamlit el mapa interactivo de los usuarios para que desde negocio puedan tener toda la información detallada desde el mismo sitio web, de esta manera se trabaja con mayor rapidez y dinamismo.
 
 - **Datos quiz**: La aplicación también muestra datos relevantes relacionados con el cuestionario, como el rendimiento promedio, las respuestas más comunes y otros indicadores clave que ayudan a evaluar la efectividad y el impacto del cuestionario en los usuarios.
     <details>
-    <summary> Estadísticas</summary>
-    <p>
-QUIERO MOSTRAR UNA DE LAS TANTAS ESTADISTICAS QUE TENEMOS DE QUIZ LA QUE SEA
-    </p>
+    <summary>Estadísticas</summary>
+    <img src="./docs/images/eda_quiz/porc_sexos_aptos.png " alt="drawing" width="500"/>
     </details>
 
 
@@ -248,11 +272,13 @@ QUIERO MOSTRAR UNA DE LAS TANTAS ESTADISTICAS QUE TENEMOS DE QUIZ LA QUE SEA
     </p>
     </details>
 
+    <details>
+    <summary>Predicciones simulación</summary>
+    <img src="./docs/images/streamlit/prediccion_modelo.png" alt="drawing" width="500"/>
+    </details>
+
 
 Por último, nos gustaría que pudiesen apreciar de primera mano el trabajo que hemos realizado con Streamlit. Es un proyecto en el que hemos dedicado tiempo y esfuerzo para ofrecer una experiencia única. ¡Los invitamos a explorar y disfrutar de lo que hemos creado con mucho cariño!
-Pueden acceder al proyecto en el siguiente enlace: [HEATLY: ¡Sin Temor al Calor!](https://mi-servicio-visual-u4ktx3b6jq-ew.a.run.app/)
-
-
 
 # 7. Ideas y contribuiciones externas
 
