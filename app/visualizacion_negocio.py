@@ -286,7 +286,7 @@ def main():
         else:
             st.markdown('El dataset esta oculto')
 
-        st.header('Prediction Model')
+        st.header('Predicción Modelo')
 
 
         ruta_mod = "./models/trained_model.pkl"
