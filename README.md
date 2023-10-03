@@ -2,7 +2,7 @@
 
 
 </a>
-<h1>HEATLY: ¡Sin Temor al Calor!</h1>
+<h1>HEATY: ¡Sin Temor al Calor!</h1>
 
 
 #### Autores: [Alex Marzá Manuel](https://github.com/AlexCapis), [Blanca Marmolejo](https://github.com/BlancaMarmolejo),  [Juan A-Mendizábal Ibarrola](https://github.com/juanmendiz)
