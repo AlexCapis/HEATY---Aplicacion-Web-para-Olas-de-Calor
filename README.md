@@ -1,4 +1,4 @@
-![Logo](/docs/images/heatylogo.jpg)
+![Logo](/images/heatylogo.png)
 
 
 </a>
