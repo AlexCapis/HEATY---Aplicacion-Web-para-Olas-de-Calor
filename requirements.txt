@@ -1,0 +1,6 @@
+# Se muestran las dependencias necesarias para ejecutar el proyecto en app.py
+pandas 
+streamlit
+numpy
+scikit-learn
+pydesk
