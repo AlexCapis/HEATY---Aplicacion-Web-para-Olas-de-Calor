@@ -60,7 +60,7 @@ def main():
     st.set_page_config(page_title="Healy", page_icon=":thermometer:", layout="wide")
 
     # Ponemos una imagen 
-    imagen = "images/heatylogo.png"
+    imagen = "images/logo.png"
     imagen_cargada = st.image(imagen)
 
     # Ponemos un titulo a nuestra aplicación
